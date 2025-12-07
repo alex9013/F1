@@ -4,7 +4,6 @@
 import { api } from "../api";
 import {
   getOutbox,
-  clearOutbox,
   setMapping,
   getMapping,
   putTaskLocal,
