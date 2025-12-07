@@ -16,7 +16,7 @@ import {
 type Task = {
   _id: string;
   title: string;
-  descrption?: string; // keep the same misspelling to match your DB
+  description?: string; // keep the same misspelling to match your DB
   status: "Pendiente" | "En Progreso" | "Completada";
   clienteId?: string;
   createdAt?: string;
@@ -27,7 +27,7 @@ function normalizeTask(x: any): Task {
   return {
     _id: String(x?._id ?? x?.id),
     title: String(x?.title ?? "(sin título)"),
-    descrption: x?.descrption ?? "",
+    description: x?.description ?? "",
     status:
       x?.status === "Completada" ||
       x?.status === "En Progreso" ||
@@ -129,7 +129,7 @@ export default function Dashboard() {
     const newTask: Task = {
       _id: clienteId, // Usa clienteId temporalmente
       title: t,
-      descrption: desc.trim() || "",
+      description: desc.trim() || "",
       status: statusNew,
       clienteId,
       createdAt: new Date().toISOString(),
@@ -147,7 +147,7 @@ export default function Dashboard() {
         // 1. Enviar al servidor
         const { data } = await api.post("/tasks", {
           title: newTask.title,
-          descrption: newTask.descrption,
+          description: newTask.description,
           status: newTask.status,
         });
         const serverTask = normalizeTask(data?.task ?? data);
@@ -218,7 +218,7 @@ export default function Dashboard() {
       try {
         await api.put(`/tasks/${id}`, {
           title: updated.title,
-          descrption: updated.descrption,
+          description: updated.description,
           status: updated.status,
         });
       } catch (err) {
@@ -251,7 +251,7 @@ export default function Dashboard() {
   function startEdit(task: Task) {
     setEditingId(task._id);
     setEditingTitle(task.title);
-    setEditingDesc(task.descrption ?? "");
+    setEditingDesc(task.description ?? "");
     setEditingStatus(task.status);
     const el = document.getElementById(`task-${task._id}`);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
@@ -266,7 +266,7 @@ export default function Dashboard() {
     const updated: Task = {
       ...before,
       title: newTitle,
-      descrption: editingDesc.trim(),
+      description: editingDesc.trim(),
       status: editingStatus,
     };
 
@@ -292,7 +292,7 @@ export default function Dashboard() {
       try {
         await api.put(`/tasks/${id}`, {
           title: updated.title,
-          descrption: updated.descrption,
+          description: updated.description,
           status: updated.status,
         });
       } catch (err) {
@@ -374,7 +374,7 @@ export default function Dashboard() {
       list = list.filter(
         (t) =>
           (t.title || "").toLowerCase().includes(s) ||
-          (t.descrption || "").toLowerCase().includes(s)
+          (t.description || "").toLowerCase().includes(s)
       );
     }
     if (filter === "active") list = list.filter((t) => t.status !== "Completada");
@@ -392,7 +392,7 @@ export default function Dashboard() {
   return (
     <div className="wrap">
       <header className="topbar" role="banner">
-        <h1>Tareas</h1>
+        <h1>Mis Tareas</h1>
         <div className="spacer" />
         <div className="stats">
           <span>Total: {stats.total}</span>
@@ -545,7 +545,7 @@ export default function Dashboard() {
                               </div>
                             </div>
 
-                            {t.descrption ? <p className="task-desc" style={{ marginTop: 8 }}>{t.descrption}</p> : null}
+                            {t.description ? <p className="task-desc" style={{ marginTop: 8 }}>{t.description}</p> : null}
                           </>
                         ) : (
                           <div className="edit-panel" style={{ marginTop: 6 }}>

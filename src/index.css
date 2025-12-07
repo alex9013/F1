@@ -20,7 +20,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100vh;
-  background: url('https://i.ibb.co/WzHjJRM/retro-grid.png') center/cover no-repeat;
+  background: url('https://img.freepik.com/fotos-premium/controladores-juegos-morados-sobre-fondo-morado_264404-426.jpg') center/cover no-repeat;
   position: relative;
 }
 
@@ -219,8 +219,8 @@ body {
 .stats {
   display: flex;
   gap: 15px;
-  font-size: 10px;
-  color: #00fff0;
+  font-size: 13px;
+  color: #51dae4;
   text-shadow: 0 0 5px #00fff0;
 }
 
@@ -302,7 +302,7 @@ main {
   border: 2px solid #ff3cff;
   border-radius: 6px;
   background: rgba(30, 0, 60, 0.8);
-  color: #fff;
+  color: #ffffff;
   font-family: 'Press Start 2P', sans-serif;
   box-shadow: 0 0 10px #ff3cff inset;
   transition: all 0.3s;
@@ -371,7 +371,7 @@ main {
   display: flex;
   justify-content: center;
   gap: 10px;
-  margin-top: 5px;
+  margin-top: 500px;
 }
 
 /* 🔥 NUEVO estilo neón para los filtros */
